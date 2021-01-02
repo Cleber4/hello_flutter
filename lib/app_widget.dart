@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/app_controller.dart';
 import 'package:hello_flutter/home_page.dart';
+import 'package:hello_flutter/login_page.dart';
 import 'package:hello_flutter/main.dart';
 
 class AppWidget extends StatelessWidget {
@@ -19,7 +20,7 @@ class AppWidget extends StatelessWidget {
                     ? Brightness.dark
                     : Brightness.light),
             debugShowCheckedModeBanner: false,
-            home: HomePage(),
+            home: LoginPage(),
           );
         });
   }
