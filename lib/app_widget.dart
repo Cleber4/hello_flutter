@@ -20,7 +20,12 @@ class AppWidget extends StatelessWidget {
                     ? Brightness.dark
                     : Brightness.light),
             debugShowCheckedModeBanner: false,
-            home: LoginPage(),
+            // Navegação entre telas - Rotas Nomeadas
+            initialRoute: '/',
+            routes: {
+              '/': (context) => LoginPage(),
+              '/home': (context) => HomePage(),
+            },
           );
         });
   }

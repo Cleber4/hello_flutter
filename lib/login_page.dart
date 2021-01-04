@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_flutter/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -23,6 +24,15 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Container(
+                  width: 100,
+                  height: 100,
+                  child: Image.network(
+                      'https://www.clebersongilvan.com.br/wp-content/uploads/2020/12/cropped-logo.png'),
+                ),
+                Container(
+                  height: 40,
+                ),
                 TextField(
                   onChanged: (text) {
                     email = text;
@@ -56,6 +66,13 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () {
                     if (email == 'user@email.com' && password == '123') {
                       print('Welcome, $email');
+                      // Navegação entre telas - Rotas Nomeadas
+                      Navigator.of(context).pushNamed('/home');
+                      /**Navegação entre telas - Manual
+                       * Navigator.of(context).push(MaterialPageRoute(
+                       * builder: (context) => HomePage(),
+                       * )); 
+                      */
                     } else {
                       print('Error in Email or password');
                     }
