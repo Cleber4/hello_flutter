@@ -9,80 +9,113 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   String email = '';
   String password = '';
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Login Page'),
-      ),
-      body: SingleChildScrollView(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 100,
-                  height: 100,
-                  child: Image.network(
-                      'https://www.clebersongilvan.com.br/wp-content/uploads/2020/12/cropped-logo.png'),
+  Widget _body() {
+    return SingleChildScrollView(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 200,
+                height: 200,
+                child: Image.network(
+                  'https://static.wikia.nocookie.net/solo-leveling/images/8/88/Ahjin.png/revision/latest/top-crop/width/360/height/450?cb=20210101125902',
                 ),
-                Container(
-                  height: 40,
-                ),
-                TextField(
-                  onChanged: (text) {
-                    email = text;
-                    print(email);
-                  },
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    labelText: 'Email',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                TextField(
-                  onChanged: (text) {
-                    password = text;
-                    print(password);
-                  },
-                  keyboardType: TextInputType.number,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                RaisedButton(
-                  onPressed: () {
-                    if (email == 'user@email.com' && password == '123') {
-                      print('Welcome, $email');
-                      // Navegação entre telas - Rotas Nomeadas
-                      Navigator.of(context).pushNamed('/home');
-                      /**Navegação entre telas - Manual
+              ),
+              Container(
+                height: 30,
+              ),
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      left: 12, right: 12, top: 20, bottom: 12),
+                  child: Column(
+                    children: [
+                      TextField(
+                        onChanged: (text) {
+                          email = text;
+                          print(email);
+                        },
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                          labelText: 'Email',
+                          fillColor: Colors.white,
+                          focusColor: Colors.white,
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      TextField(
+                        onChanged: (text) {
+                          password = text;
+                          print(password);
+                        },
+                        keyboardType: TextInputType.number,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          labelText: 'Password',
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      RaisedButton(
+                        textColor: Colors.white,
+                        color: Colors.deepPurple,
+                        onPressed: () {
+                          if (email == 'user@email.com' && password == '123') {
+                            print('Welcome, $email');
+                            // Navegação entre telas - Rotas Nomeadas
+                            Navigator.of(context).pushNamed('/home');
+                            /**Navegação entre telas - Manual
                        * Navigator.of(context).push(MaterialPageRoute(
                        * builder: (context) => HomePage(),
                        * )); 
                       */
-                    } else {
-                      print('Error in Email or password');
-                    }
-                  },
-                  child: Text('Entrar'),
-                )
-              ],
-            ),
+                          } else {
+                            print('Error in Email or password');
+                          }
+                        },
+                        child: Text('Entrar'),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Welcome, player'),
+      ),
+      body: Stack(
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: Image.asset(
+              'assets/images/logo_01.jpg',
+              fit: BoxFit.cover,
+            ),
+          ),
+          Container(
+            color: Colors.black.withOpacity(0.3),
+          ),
+          _body(),
+        ],
       ),
     );
   }
