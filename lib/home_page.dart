@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/app_controller.dart';
 import 'package:hello_flutter/screen/custom_switch.dart';
@@ -55,77 +57,107 @@ class _HomePageState extends State<HomePage> {
           CustomSwitch(),
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.person,
-            color: Colors.red,
-            size: 80,
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/LOGO_02.jpg"),
+            fit: BoxFit.cover,
           ),
-          Container(
-            child: Align(
-              alignment: Alignment.center,
-              child: Container(
-                height: 100,
-                width: 180,
-                color: Colors.red,
-                child: Center(
-                  child: GestureDetector(
-                    child: Text(
-                      "People: $counter",
-                      style: TextStyle(fontSize: 30, color: Colors.white),
-                    ),
-                    onTap: () {
-                      setState(() {
-                        counter--;
-                        print("People + 1 = $counter");
-                      });
-                    },
-                  ),
-                ),
-              ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.person,
+              color: Colors.white,
+              size: 80,
             ),
-          ),
-          Container(
-            height: 30,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                child: IconButton(
-                    icon: Icon(
-                      Icons.person_remove_alt_1,
-                      color: Colors.red,
-                      size: 30,
+            Container(
+              child: Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                    decoration: BoxDecoration(boxShadow: [
+                      BoxShadow(
+                          blurRadius: 24,
+                          spreadRadius: 16,
+                          color: Colors.black.withOpacity(0.2))
+                    ]),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16.0),
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(
+                          sigmaX: 40.0,
+                          sigmaY: 40.0,
+                        ),
+                        child: Container(
+                          height: 300,
+                          width: 300,
+                          decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.2),
+                              borderRadius: BorderRadius.circular(16.0),
+                              border: Border.all(
+                                  width: 1.5,
+                                  color: Colors.white.withOpacity(0.2))),
+                          child: Center(
+                            child: GestureDetector(
+                              child: Text(
+                                "People: $counter",
+                                style: TextStyle(
+                                    fontSize: 30, color: Colors.white),
+                              ),
+                              onTap: () {
+                                setState(() {
+                                  counter--;
+                                  print("People + 1 = $counter");
+                                });
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
-                    onPressed: () {
-                      setState(() {
-                        counter--;
-                        print("People - 1 = $counter");
-                      });
-                    }),
-              ),
-              Container(
-                child: IconButton(
-                    icon: Icon(
-                      Icons.person_add,
-                      color: Colors.red,
-                      size: 30,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        counter++;
-                        print("People + 1 = $counter");
-                      });
-                    }),
-              ),
-            ],
-          ),
-        ],
+                  )),
+            ),
+            Container(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  child: IconButton(
+                      icon: Icon(
+                        Icons.person_remove_alt_1,
+                        color: Colors.white,
+                        size: 40,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          counter--;
+                          print("People - 1 = $counter");
+                        });
+                      }),
+                ),
+                Container(
+                  child: IconButton(
+                      icon: Icon(
+                        Icons.person_add,
+                        color: Colors.white,
+                        size: 40,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          counter++;
+                          print("People + 1 = $counter");
+                        });
+                      }),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
@@ -139,3 +171,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+/*
+*/
