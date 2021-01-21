@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hello_flutter/app_controller.dart';
 import 'package:hello_flutter/home_page.dart';
 import 'package:hello_flutter/login_page.dart';
-import 'package:hello_flutter/main.dart';
+//import 'package:hello_flutter/main.dart';
 
 class AppWidget extends StatelessWidget {
   final String title;
